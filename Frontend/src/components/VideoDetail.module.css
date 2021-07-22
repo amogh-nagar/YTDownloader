@@ -1,0 +1,73 @@
+.details {
+  margin: 0px 5px;
+  padding: 5px 7px;
+  color: white;
+  position: relative;
+}
+
+.details a {
+  text-decoration: none;
+  /* color:rgb(2, 7, 7); */
+
+  background-color: rgba(96, 243, 223, 0.849);
+  border-radius: 5px;
+  padding: 4px 10px;
+  margin: 5px 0px;
+  bottom: 0;
+  position: relative;
+  transition: all 1s ease-in-out;
+}
+
+.details a:hover {
+  background-color: rgb(41, 175, 184);
+}
+
+.details h2 {
+  font-size: 40px;
+  text-decoration: underline;
+}
+
+.details p {
+  font-family: "Courier New", Courier, monospace;
+  font-style: bold;
+  font-size: 1rem;
+  color: black;
+}
+
+.details button {
+  padding: 4px 7px;
+  margin: 5px 7px;
+  background-color: rgb(131, 241, 245);
+  border-radius: 5px;
+  color: darkblue;
+  transition: all 1s ease-in-out;
+}
+
+.details button:hover,
+.details button:active {
+  background-color: rgb(51, 177, 250);
+}
+
+.details select {
+  margin: 0px 7px;
+  padding: 4px 7px;
+  border-radius: 5px;
+  background-color: rgb(191, 250, 250);
+  color: darkgreen;
+}
+.details select:active {
+  outline: none;
+}
+
+@media screen and (max-width: 700px) {
+  .details {
+    padding: 1px 3px;
+  }
+  .details a {
+    margin: 1px 3px;
+    padding: 2px 3px;
+  }
+  .details p {
+    font-size: 15px;
+  }
+}
