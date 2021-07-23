@@ -9,7 +9,6 @@
     justify-content: center;
     background-color: rgba(0,0,0,0.75);
     z-index:10;
-    overflow-y:scroll
 }
 
 
@@ -36,8 +35,7 @@ margin:auto
 @media screen and (max-width:700px){
     .container{
  flex-direction: column-reverse; 
- top:3vh;
- overflow-y: auto;      
+ top:10vh;
  padding:4px 7px;
 margin:0px 5px;
 

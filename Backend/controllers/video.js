@@ -4,12 +4,12 @@ const fs = require("fs");
 const Path = path.join(__dirname, "video.mp4");
 
 exports.downloadvideo = async (req, res, next) => {
-  console.log(req.query);
+  // console.log(req.query);
   //   console.log(req.params.url)
   let url = req.query.url;
   let itag = +req.query.itag;
   let format=req.query.format
-  console.log(itag)
+  // console.log(itag)
   // console.log(typeof itag)
 
   res.setHeader("Content-Disposition", 'attachment;filename="Download.'+format+'"');
@@ -27,7 +27,11 @@ exports.videodetails = async (req, res, next) => {
   let url = req.query.url;
 
   let info = await ytdl.getInfo(url);
-  // console.log(info.formats);
+  // let arr=info.formats.filter(x=>x.hasAudio!==false)
+  // console.log(arr)
+  // console.log("info.formats ",info.formats)
+  // let audioformats=ytdl.filterFormats(info.formats,'audioonly')
+  // console.log("audioonly ",audioformats);
   let thumbnaildetails = info.videoDetails.thumbnails[3].url;
   let title = info.videoDetails.title;
   let description = info.videoDetails.description;
@@ -38,6 +42,7 @@ exports.videodetails = async (req, res, next) => {
     title,
     description,
     channel,
-    qualities: info.formats,
+qualities:info.formats,
+// onlyaudio:audioformats
   });
 };
