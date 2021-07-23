@@ -4,18 +4,17 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  background:lightblue;
-  flex-direction:column
-
+  background: lightblue;
+  flex-direction: column;
 }
-.message{
-  color:#00c0ff;
-  margin:20px 0px
+.message {
+  color: #00c0ff;
+  margin: 20px 0px;
 }
 .container {
   height: 250px;
   width: 25vw;
-  background-color: #00001c;
+  background-color: #3d5ff5;
   border-radius: 5px;
   box-shadow: 5px 10px 13px 4px rgba(0, 0, 0, 0.5);
   display: flex;
@@ -29,14 +28,14 @@
 
 .form label {
   display: block;
-  color: rgba(23, 76, 252, 0.822);
+  color: rgba(15, 30, 80, 0.822);
   font-size: 20px;
   font-weight: 300;
 }
 
 .form input {
   display: block;
-  width: 300px;
+  width: 200px;
   border-radius: 5px;
   margin: 4px 0px;
   height: 2rem;
@@ -60,33 +59,30 @@
   background-color: rgb(32, 146, 240);
 }
 
-.form p{
-  color:red;
-  font-size:13px
+.form p {
+  color: red;
+  font-size: 13px;
 }
 
-
-.form button:disabled{
-  color:#ff1547;
-  background-color:#ff6347;
-  animation:bump 1s ease-in-out;
-
+.form button:disabled {
+  color: #ff1547;
+  background-color: #ff6347;
+  animation: bump 1s ease-in-out;
 }
-@keyframes bump{
-  0%{
-    transform:scale(1)
+@keyframes bump {
+  0% {
+    transform: scale(1);
   }
-  50%{
-    transform:scale(1.5)
-
+  50% {
+    transform: scale(1.5);
   }
-  100%{
-    transform:scale(1)
+  100% {
+    transform: scale(1);
   }
 }
 
-@media screen and (max-width:900px){
-    .container{
-        width:400px;
-    }
+@media screen and (max-width: 900px) {
+  .container {
+    width: 300px;
+  }
 }

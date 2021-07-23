@@ -8,11 +8,14 @@ exports.downloadvideo = async (req, res, next) => {
   //   console.log(req.params.url)
   let url = req.query.url;
   let itag = +req.query.itag;
-  let format=req.query.format
+  let format = req.query.format;
   // console.log(itag)
   // console.log(typeof itag)
 
-  res.setHeader("Content-Disposition", 'attachment;filename="Download.'+format+'"');
+  res.setHeader(
+    "Content-Disposition",
+    'attachment;filename="Download.' + format + '"'
+  );
   ytdl(url, {
     filter: (format) => format.itag === itag,
   }).pipe(res);
@@ -42,7 +45,7 @@ exports.videodetails = async (req, res, next) => {
     title,
     description,
     channel,
-qualities:info.formats,
-// onlyaudio:audioformats
+    qualities: info.formats,
+    // onlyaudio:audioformats
   });
 };
