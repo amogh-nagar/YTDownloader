@@ -23,8 +23,8 @@ app.use(morgan('combined',{stream:access}))//logging requests
 app.use(bodyparser.json())
 
 
-
-
+//For Disabling the Browser's automatic cache downloading
+app.disable('etag')
 
 //CORS
 app.use((req, res, next) => {

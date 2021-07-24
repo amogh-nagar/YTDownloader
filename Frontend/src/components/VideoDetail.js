@@ -38,7 +38,7 @@ const VideoDetail = (props) => {
   const downloadhandler = () => {
     let x = document.getElementById("itags").value;
     let format = "mp4";
-    window.location.href = `https://udownloader.herokuapp.com/video?url=${props.inputurl}&itag=${x}&format=${format}`;
+    window.location.href = `http://localhost:8080/video?url=${props.inputurl}&itag=${x}&format=${format}`;
   };
   // s://udownloader.herokuapp.com
   return (
@@ -82,16 +82,16 @@ const VideoDetail = (props) => {
                   {qualityarr}
                 </select>
 
-                <img src={props.videodetails.thumbnail} alt="Thumbnail" />
                       
               </>
             ) : (
               
               <div className={styles.error}>{props.videodetails.description}</div>
             )}
-  
-          </div>
 
+          </div>
+              {props.videodetails.channel.length > 0 && <img src={props.videodetails.thumbnail} alt="Thumbnail" />}  
+  
         </>
       )}
     </Modal>

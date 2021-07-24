@@ -45,7 +45,8 @@ function App() {
     }
     seterror(false);
     setisloading(true);
-    fetch(`https://udownloader.herokuapp.com/video/detail?url=${input}`)
+    // https://udownloader.herokuapp.com
+    fetch(`http://localhost:8080/video/detail?url=${input}`)
       .then((res) => {
         return res.json();
       })
