@@ -4,35 +4,37 @@ import Loading from "./Loading";
 import Emoji from "a11y-react-emoji";
 
 const VideoDetail = (props) => {
-  let qualityarr = props.videodetails.qualities.map((quality) => {
-    if (quality.container === "mp4") {
-      if (quality.hasAudio && quality.hasVideo) {
-        return (
-          <option value={`${quality.itag}`} key={quality.itag}>
-            {quality.container} - {quality.qualityLabel}(Video+Audio)
-          </option>
-        );
-      } else if (!quality.hasAudio && quality.hasVideo) {
-        return (
-          <option value={`${quality.itag}`} key={quality.itag}>
-            {quality.container} - {quality.qualityLabel}(Only Video)
-          </option>
-        );
-      } else if (quality.hasAudio && !quality.hasVideo) {
-        return (
-          <option value={`${quality.itag}`} key={quality.itag}>
-            {quality.container} - {quality.qualityLabel}(Only Audio)
-          </option>
-        );
-      } else {
-        return null;
+  let qualityarr = [];
+  if (props.videodetails.qualities.length > 0) {
+    qualityarr = props.videodetails.qualities.map((quality) => {
+      if (quality.container === "mp4") {
+        if (quality.hasAudio && quality.hasVideo) {
+          return (
+            <option value={`${quality.itag}`} key={quality.itag}>
+              {quality.container} - {quality.qualityLabel}(Video+Audio)
+            </option>
+          );
+        } else if (!quality.hasAudio && quality.hasVideo) {
+          return (
+            <option value={`${quality.itag}`} key={quality.itag}>
+              {quality.container} - {quality.qualityLabel}(Only Video)
+            </option>
+          );
+        } else if (quality.hasAudio && !quality.hasVideo) {
+          return (
+            <option value={`${quality.itag}`} key={quality.itag}>
+              {quality.container} - {quality.qualityLabel}(Only Audio)
+            </option>
+          );
+        } else {
+          return null;
+        }
       }
-    }
-    return null;
-  });
-  // qualityarr.push(<option value=></option>)
-  qualityarr = qualityarr.filter((quality) => quality !== null);
-
+      return null;
+    });
+    // qualityarr.push(<option value=></option>)
+    qualityarr = qualityarr.filter((quality) => quality !== null);
+  }
   const downloadhandler = () => {
     let x = document.getElementById("itags").value;
     let format = "mp4";
@@ -61,25 +63,35 @@ const VideoDetail = (props) => {
                 Repo
               </a>
             </p>
-            <a
-              rel="noreferrer"
-              href={props.videodetails.channel}
-              target="_blank"
-            >
-              Channel
-            </a>
-            <button onClick={downloadhandler}>Download</button>
-            <select
-              name=""
-              id="itags"
-              //   value={seloption.value}
-              //   onChange={handlechange}
-            >
-              {qualityarr}
-            </select>
+            {props.videodetails.channel.length > 0 ? (
+              <>
+                <a
+                  rel="noreferrer"
+                  href={props.videodetails.channel}
+                  target="_blank"
+                >
+                  Channel
+                </a>
+                <button onClick={downloadhandler}>Download</button>
+                <select
+                  name=""
+                  id="itags"
+                  //   value={seloption.value}
+                  //   onChange={handlechange}
+                >
+                  {qualityarr}
+                </select>
+
+                <img src={props.videodetails.thumbnail} alt="Thumbnail" />
+                      
+              </>
+            ) : (
+              
+              <div className={styles.error}>{props.videodetails.description}</div>
+            )}
+  
           </div>
 
-          <img src={props.videodetails.thumbnail} alt="Thumbnail" />
         </>
       )}
     </Modal>

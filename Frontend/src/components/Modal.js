@@ -14,11 +14,10 @@ const Modal = (props) => {
   let overlay = document.getElementById("overlays");
   return (
     <div>
-      {ReactDOM.createPortal(<Backdrop onClick={props.onClick} />, overlay)}
-      {ReactDOM.createPortal(
-        <Maincontainer children={props.children} />,
-        overlay
-      )}
+{ReactDOM.createPortal(<Backdrop onClick={props.onClick} />,overlay)}      
+{ReactDOM.createPortal(<Maincontainer children={props.children} />,overlay)}      
+       
+        
     </div>
   );
 };

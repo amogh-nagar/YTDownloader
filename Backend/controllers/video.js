@@ -3,7 +3,7 @@ const path = require("path");
 const fs = require("fs");
 const Path = path.join(__dirname, "video.mp4");
 
-exports.downloadvideo = async (req, res, next) => {
+exports.downloadvideo = (req, res, next) => {
   // console.log(req.query);
   //   console.log(req.params.url)
   let url = req.query.url;
@@ -28,24 +28,33 @@ exports.downloadvideo = async (req, res, next) => {
 
 exports.videodetails = async (req, res, next) => {
   let url = req.query.url;
+  try {
+    let info = await ytdl.getInfo(url);
+    // let arr=info.formats.filter(x=>x.hasAudio!==false)
+    // console.log(arr)
+    // console.log("info.formats ",info.formats)
+    // let audioformats=ytdl.filterFormats(info.formats,'audioonly')
+    // console.log("audioonly ",audioformats);
+    let thumbnaildetails = info.videoDetails.thumbnails[3].url;
+    let title = info.videoDetails.title;
+    let description = info.videoDetails.description;
 
-  let info = await ytdl.getInfo(url);
-  // let arr=info.formats.filter(x=>x.hasAudio!==false)
-  // console.log(arr)
-  // console.log("info.formats ",info.formats)
-  // let audioformats=ytdl.filterFormats(info.formats,'audioonly')
-  // console.log("audioonly ",audioformats);
-  let thumbnaildetails = info.videoDetails.thumbnails[3].url;
-  let title = info.videoDetails.title;
-  let description = info.videoDetails.description;
-
-  let channel = info.videoDetails.author.channel_url;
-  res.status(200).json({
-    thumbnail: thumbnaildetails,
-    title,
-    description,
-    channel,
-    qualities: info.formats,
-    // onlyaudio:audioformats
-  });
+    let channel = info.videoDetails.author.channel_url;
+    res.status(200).json({
+      thumbnail: thumbnaildetails,
+      title,
+      description,
+      channel,
+      qualities: info.formats,
+      // onlyaudio:audioformats
+    });
+  } catch (err) {
+    res.status(200).json({
+      thumbnail:"",
+       title: "Some Error Occured",
+      description: "This is because of Some Invalid URL, You've entered",
+      channel: "",
+      qualities: [],
+    });
+  }
 };

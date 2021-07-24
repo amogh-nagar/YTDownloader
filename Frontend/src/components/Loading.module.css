@@ -6,6 +6,7 @@
   height: 11em;
   border-radius: 50%;
   background: #ffffff;
+  /* background: green; */
   background: -moz-linear-gradient(left, #ffffff 10%, rgba(255, 255, 255, 0) 42%);
   background: -webkit-linear-gradient(left, #ffffff 10%, rgba(255, 255, 255, 0) 42%);
   background: -o-linear-gradient(left, #ffffff 10%, rgba(255, 255, 255, 0) 42%);
@@ -22,6 +23,7 @@
   width: 50%;
   height: 50%;
   background: #ffffff;
+  /* background: blue; */
   border-radius: 100% 0 0 0;
   position: absolute;
   top: 0;
@@ -30,6 +32,9 @@
 }
 .loader:after {
   background: #0dc5c1;
+  
+  /* background: red; */
+
   width: 75%;
   height: 75%;
   border-radius: 50%;
